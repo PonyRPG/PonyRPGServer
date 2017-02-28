@@ -1,5 +1,3 @@
-# list all files
-file(GLOB_RECURSE SRC_LIST *.cpp)
 file(GLOB_RECURSE HDR_LIST *.h)
 
 # static linking
@@ -21,6 +19,8 @@ add_executable(${PROJECT_NAME} ${SRC_LIST} ${HDR_LIST})
 
 # link libraries
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${GMP_LIBRARY} ${LibXML2_LIBRARIES})
+
+set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # libxml2 if linked statically requires zlib + iconv + lzma on Unix
 if(USE_STATIC_LIBS)
@@ -56,7 +56,7 @@ endif()
 
 # default build type
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE "RelWithDebInfo")
+  set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
 # compile flags
