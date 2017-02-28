@@ -32,6 +32,7 @@ stamp-h1
 *~
 *.autosave
 *.swp
+*.swo
 *.bak
 *.o
 
